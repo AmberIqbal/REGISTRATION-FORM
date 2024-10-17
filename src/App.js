@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Heading from "./components/Heading";
+import Createaccount from "./components/Createaccount";
+import React, { useState } from "react";
 
 function App() {
+  const flep = { firstName: "", lastName: "", email: "", password: "" };
+
+  const [input, setInput] = useState(flep);
+  function handleChange(event) {
+    setInput((preValue) => {
+      return {
+        ...preValue,
+        [event.target.name]: event.target.value,
+      };
+    });
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(input);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+        justifyContent: "flex-start",
+        height: "100vh",
+        alignItems: "center",
+      }}
+    >
+      <Heading />
+      <Createaccount
+        input={input}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 }
