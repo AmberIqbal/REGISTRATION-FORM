@@ -18,7 +18,7 @@ function App() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(input);
+    console.log("form submitted", input);
   };
   return (
     <div
